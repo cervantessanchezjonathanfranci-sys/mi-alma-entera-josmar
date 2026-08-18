@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum de Recuerdos - mi budín ✨</title>
+    
+    <!-- Fuentes Kawaii de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --amarillo-pompom: #fff3a1;
+            --amarillo-pastel: #fffbe3;
+            --marron-boina: #5c3a21;
+            --marron-suave: #8c5a32;
+            --blanco-crema: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--marron-boina);
+            background-color: var(--amarillo-pompom);
+            overflow-x: hidden;
+        }
+
+        /* Fondo de patrón Pompompurin con overlay */
+        .pompom-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff6bd;
+            background-image: 
+                radial-gradient(var(--marron-boina) 10%, transparent 11%),
+                radial-gradient(var(--marron-boina) 10%, transparent 11%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        header {
+            padding: 60px 20px 20px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: var(--marron-boina);
+            text-shadow: 4px 4px 0px #ffffff;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--marron-suave);
+            margin-top: 10px;
+        }
+
+        /* Galería de Fotos Estilo Polaroid Kawaii */
+        .container {
+            max-width: 1100px;
+            margin: 20px auto 50px auto;
+            padding: 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .photo-card {
+            background: var(--blanco-crema);
+            padding: 15px 15px 25px 15px;
+            border-radius: 20px;
+            border: 4px solid var(--marron-boina);
+            box-shadow: 0 8px 0px var(--marron-suave);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Inclinación tipo Polaroid alternada por tarjeta */
+        .photo-card:nth-child(odd) {
+            transform: rotate(-3deg);
+        }
+        .photo-card:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) scale(1.03) rotate(0deg);
+            box-shadow: 0 12px 0px var(--marron-boina);
+            z-index: 10;
+        }
+
+        /* Boina de Pompompurin sobre cada foto */
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 14px;
+            background-color: var(--marron-boina);
+            border-radius: 10px 10px 3px 3px;
+        }
+
+        .photo-card img, .photo-card video {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 2px solid var(--marron-boina);
+            background-color: var(--amarillo-pastel);
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .caption {
+            font-family: 'Fredoka One', cursive;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: var(--marron-boina);
+            word-wrap: break-word;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Botones de Navegación */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 20px 20px 60px 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: var(--marron-boina);
+            background: var(--blanco-crema);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0px var(--marron-boina);
+            border: 3px solid var(--marron-boina);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #fff8d6;
+            box-shadow: 0 7px 0px var(--marron-boina);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-weight: 700;
+            color: var(--amarillo-pastel);
+            background: var(--marron-boina);
+        }
+
+        /* Elementos Flotantes */
+        .floating-item {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            animation: floatUp var(--duration) linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.8rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
+            .photo-card img, .photo-card video { height: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pompom-bg"></div>
+
+    <header>
+        <h1>Álbum de Recuerdos</h1>
+        <p class="subtitle">Nuestros momentos juntos 🍮✨</p>
+    </header>
+
+    <div class="container">
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="index.html" class="btn"> Volver al Inicio</a>
+        <a href="carta.html" class="btn">Carta</a>
+        <a href="razones.html" class="btn">100 razones</a>
+        <a href="tamo.html" class="btn">Te amo en el mundo</a>
+        <a href="juego1.html" class="btn">carrera</a>
+
+    </div>
+
+    <footer>
+        <p style="margin: 0;">Guardando nuestros mejores momentos con mi budín 💛</p>
+    </footer>
+
+    <script>
+        // Configura tus imágenes y videos aquí
+        const myPhotos = [
+            { src: "ima1.jpeg", caption: "Atardecer bonito 🌅" },
+            { src: "ima2.jpeg", caption: "Cocodrilo Dorado 🌿" },
+            { src: "ima3.jpeg", caption: "Mega Escultura 🏛️" },
+            { src: "ima4.jpeg", caption: "el más graduado y que orgullosa estoy de tiii mi josmiiii" },
+            { src: "ima5.jpeg", caption: "cuando decidimos ser padres y adoptamos al pekeño timiii 🌞" },
+            { src: "ima6.jpeg", caption: "la ves que más tiempo hemos pasado juntos y que chicles bomba fue JIJIBUBJ" },
+            { src: "ima7.jpeg", caption: "besito besito mua mua te amo" },
+            { src: "ima8.jpeg", caption: "primera salida después de decirnos q nos gustábamos jiji" },
+            { src: "ima9.jpeg", caption: "top top salidas claro que siii" },
+            { src: "ima10.jpeg", caption: "q kawai mi amoorr" },
+            { src: "ima11.jpeg", caption: "mucho abacho y becho claro q ci" },
+            { src: "ima12.jpeg", caption: "besitos sabor birria osi osi" },
+            { src: "vi1mp4.mp4", caption: "cuando alimente a un vagabundo y ese mismo día me dijo q le gustaba JIJIJIJIJI" },
+            { src: "vi2.mp4", caption: "el patrón a todo dar" },
+            { src: "ima13.jpeg", caption: "la primera de muchas flores 💗" },
+            { src: "ima14.jpeg", caption: "salidita después de ver tu muy exitoso emprendimiento osi osi" },
+            { src: "ima22.jpeg", caption: "y como siempre, nuestro desastre JQJJSJSJ" },
+            { src: "ima16.jpeg", caption: "omggg, la primera de muchas maquilladas más que te esperan MUEJEJEJEJ" },
+            { src: "ima17.jpeg", caption: "comidita antes de la chamba osi osi y cuando fuimos a hacer tu despensa 👏🌞" },
+            { src: "vi3.mp4", caption: "JQJSJJAAJ SIII q genial te amo" },
+            { src: "ima18.jpeg", caption: "jochos ricos y yo muy cómoda osi osi" },
+            { src: "ima19.jpeg", caption: "jeje, noviecitos JIJIJJJI" },
+            { src: "vi4.mp4", caption: "los más tiktokers claro que siii" },
+            { src: "img21.jpeg", caption: "nuestro anillo precioso te amo 💕" },
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        // Renderizar fotos y videos en el HTML
+        myPhotos.forEach(photo => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+
+            const isVideo = photo.src.endsWith('.mp4') || photo.src.endsWith('.webm') || photo.src.endsWith('.ogg');
+            
+            const mediaHTML = isVideo 
+                ? `<video src="${photo.src}" controls playsinline preload="metadata"></video>`
+                : `<img src="${photo.src}" alt="${photo.caption}">`;
+
+            card.innerHTML = `
+                ${mediaHTML}
+                <div class="caption">${photo.caption}</div>
+            `;
+
+            galleryGrid.appendChild(card);
+        });
+
+        // Íconos flotantes estilo Pompompurin
+        const icons = ['🍮', '⭐', '🐾', '💛', '🧁'];
+        
+        for (let i = 0; i < 20; i++) {
+            const item = document.createElement('div');
+            item.className = 'floating-item';
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.fontSize = (Math.random() * 15 + 18) + 'px';
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.setProperty('--duration', (Math.random() * 6 + 6) + 's');
+            item.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(item);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Veces Te Amo - mi budín ✨</title>
+    
+    <!-- Fuentes Kawaii de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --amarillo-pompom: #fff3a1;
+            --amarillo-pastel: #fffbe3;
+            --marron-boina: #5c3a21;
+            --marron-suave: #8c5a32;
+            --blanco-crema: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--marron-boina);
+            background-color: var(--amarillo-pompom);
+            overflow-x: hidden;
+        }
+
+        /* Fondo de patrón Pompompurin con overlay */
+        .pompom-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff6bd;
+            background-image: 
+                radial-gradient(var(--marron-boina) 10%, transparent 11%),
+                radial-gradient(var(--marron-boina) 10%, transparent 11%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            color: var(--marron-boina);
+            text-shadow: 4px 4px 0px #ffffff;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--marron-suave);
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            background: var(--amarillo-pastel);
+            padding: 35px;
+            border-radius: 35px;
+            border: 5px solid var(--marron-boina);
+            box-shadow: 0 10px 0px var(--marron-suave);
+        }
+
+        /* Cuadrícula de idiomas */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lang-card {
+            background: var(--blanco-crema);
+            padding: 15px;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid var(--marron-boina);
+            box-shadow: 0 4px 0px var(--marron-boina);
+            transition: all 0.2s ease;
+        }
+
+        .lang-card:hover {
+            transform: translateY(-4px);
+            background: #fff8d6;
+            box-shadow: 0 6px 0px var(--marron-boina);
+        }
+
+        .lang-name {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--marron-suave);
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .phrase {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            display: block;
+            color: var(--marron-boina);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 20px 20px 60px 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: var(--marron-boina);
+            background: var(--blanco-crema);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0px var(--marron-boina);
+            border: 3px solid var(--marron-boina);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #fff8d6;
+            color: var(--marron-boina);
+            box-shadow: 0 7px 0px var(--marron-boina);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px var(--marron-boina);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-weight: 700;
+            color: var(--amarillo-pastel);
+            background: var(--marron-boina);
+        }
+
+        /* Elementos Flotantes */
+        .floating-item {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            animation: floatUp var(--duration) linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .languages-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .phrase { font-size: 1rem; }
+            .container { padding: 20px; margin: 0 15px 40px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pompom-bg"></div>
+
+    <header>
+        <h1>100 veces mi budín</h1>
+        <p class="subtitle">Un sentimiento, cien lenguajes 🍮</p>
+    </header>
+
+    <div class="container">
+        <div class="languages-grid" id="langGrid"></div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="index.html" class="btn"> Volver al Inicio</a>
+        <a href="carta.html" class="btn">Carta</a>
+        <a href="razones.html" class="btn">100 razones</a>
+        <a href="juego1.html" class="btn">Carrera</a>
+        <a href="album.html" class="btn">Album</a>
+    </div>
+
+    <footer>
+        <p style="margin: 0;">Porque decirte que te amo nunca es suficiente 💛</p>
+    </footer>
+
+    <script>
+        const translations = [
+            {l: "Español", p: "Te amo mucho, mi budín"},
+            {l: "Inglés", p: "I love you so much, mi budín"},
+            {l: "Francés", p: "Je t'aime énormément, mi budín"},
+            {l: "Italiano", p: "Ti amo tanto, mi budín"},
+            {l: "Alemán", p: "Ich liebe dich sehr, mi budín"},
+            {l: "Portugués", p: "Eu te amo muito, mi budín"},
+            {l: "Ruso", p: "Ya tebya lyublyu, mi budín"},
+            {l: "Japonés", p: "Daisuki da yo, mi budín"},
+            {l: "Coreano", p: "Saranghae, mi budín"},
+            {l: "Chino", p: "Wo ai ni, mi budín"},
+            {l: "Árabe", p: "Uhibbuki jiddan, mi budín"},
+            {l: "Griego", p: "S'agapo poli, mi budín"},
+            {l: "Holandés", p: "Ik hou van jou, mi budín"},
+            {l: "Sueco", p: "Jag älskar dig, mi budín"},
+            {l: "Noruego", p: "Jeg elsker deg, mi budín"},
+            {l: "Danés", p: "Jeg elsker dig, mi budín"},
+            {l: "Finlandés", p: "Minä rakastan sinua, mi budín"},
+            {l: "Turco", p: "Seni cok seviyorum, mi budín"},
+            {l: "Polaco", p: "Kocham Cie, mi budín"},
+            {l: "Húngaro", p: "Szeretlek, mi budín"},
+            {l: "Checo", p: "Miluji te, mi budín"},
+            {l: "Rumano", p: "Te iubesc mult, mi budín"},
+            {l: "Catalán", p: "T'estimo molt, mi budín"},
+            {l: "Euskera", p: "Maite zaitut, mi budín"},
+            {l: "Gallego", p: "Ámote moito, mi budín"},
+            {l: "Latín", p: "Te valde amo, mi budín"},
+            {l: "Esperanto", p: "Mi amas vin, mi budín"},
+            {l: "Hindi", p: "Main tumse pyar karta hoon, mi budín"},
+            {l: "Tailandés", p: "Phom rak khun, mi budín"},
+            {l: "Vietnamita", p: "Anh yêu em, mi budín"},
+            {l: "Tagalo", p: "Mahal kita, mi budín"},
+            {l: "Indonesio", p: "Aku cinta kamu, mi budín"},
+            {l: "Malayo", p: "Saya sayang awak, mi budín"},
+            {l: "Hebreo", p: "Ani ohev otach, mi budín"},
+            {l: "Persa", p: "Doset daram, mi budín"},
+            {l: "Swahili", p: "Nakupenda sana, mi budín"},
+            {l: "Afrikáans", p: "Ek het jou lief, mi budín"},
+            {l: "Islandés", p: "Ég elska þig, mi budín"},
+            {l: "Irlandés", p: "Is breá liom tú, mi budín"},
+            {l: "Galés", p: "Rwy'n dy garu di, mi budín"},
+            {l: "Escocés", p: "Tha gaol agam ort, mi budín"},
+            {l: "Ucraniano", p: "Ya tebe lyublyu, mi budín"},
+            {l: "Búlgaro", p: "Obicham te, mi budín"},
+            {l: "Serbio", p: "Volim te, mi budín"},
+            {l: "Croata", p: "Volim te, mi budín"},
+            {l: "Esloveno", p: "Ljubim te, mi budín"},
+            {l: "Eslovaco", p: "Lubim ta, mi budín"},
+            {l: "Estonio", p: "Ma armastan sind, mi budín"},
+            {l: "Letón", p: "Es tevi milu, mi budín"},
+            {l: "Lituano", p: "As tave myliu, mi budín"},
+            {l: "Albanés", p: "Te dua, mi budín"},
+            {l: "Macedonio", p: "Te sakam, mi budín"},
+            {l: "Armenio", p: "Yes kez sirum yem, mi budín"},
+            {l: "Georgiano", p: "Me shen miqvarxar, mi budín"},
+            {l: "Azerbaiyano", p: "Mən səni sevirəm, mi budín"},
+            {l: "Kazajo", p: "Men seni jaqsı köremin, mi budín"},
+            {l: "Uzbeko", p: "Men seni sevaman, mi budín"},
+            {l: "Mongol", p: "Bi chamd khayrtay, mi budín"},
+            {l: "Nepalí", p: "Ma timilai maya garchu, mi budín"},
+            {l: "Bengalí", p: "Ami tomake bhalobashi, mi budín"},
+            {l: "Punjabi", p: "Mai tainu pyar karda ha, mi budín"},
+            {l: "Gujarati", p: "Hu tane prem karu chu, mi budín"},
+            {l: "Tamil", p: "Naan unnai kadhalikkiren, mi budín"},
+            {l: "Telugu", p: "Nenu ninnu premistunnanu, mi budín"},
+            {l: "Canarés", p: "Naanu ninnanu prithisuthene, mi budín"},
+            {l: "Malayalam", p: "Njan ninne mohikkunnu, mi budín"},
+            {l: "Cingalés", p: "Mama oyata adareyi, mi budín"},
+            {l: "Birmano", p: "Chit pa de, mi budín"},
+            {l: "Jemer", p: "Soro lanh nhee, mi budín"},
+            {l: "Lao", p: "Khon hak chao, mi budín"},
+            {l: "Zulú", p: "Ngiyakuthanda, mi budín"},
+            {l: "Xhosa", p: "Ndiyaguthanda, mi budín"},
+            {l: "Yoruba", p: "Mo ni fe re, mi budín"},
+            {l: "Igbo", p: "Afurum gi nanya, mi budín"},
+            {l: "Amárico", p: "Ewedishalehu, mi budín"},
+            {l: "Somalí", p: "Wa ku jecelahay, mi budín"},
+            {l: "Maorí", p: "Aroha ana ahau ki a koe, mi budín"},
+            {l: "Samoano", p: "Ou te alofa ia te oe, mi budín"},
+            {l: "Fiyiano", p: "Au lomani iko, mi budín"},
+            {l: "Hawaiiano", p: "Aloha wau ia 'oe, mi budín"},
+            {l: "Quechua", p: "Cuyayquim, mi budín"},
+            {l: "Guaraní", p: "Rohayhu, mi budín"},
+            {l: "Náhuatl", p: "Ni mits tlayotla, mi budín"},
+            {l: "Maya", p: "In yaakumech, mi budín"},
+            {l: "Luxemburgués", p: "Ech hun dech gär, mi budín"},
+            {l: "Bretón", p: "Da garout a ran, mi budín"},
+            {l: "Córnico", p: "My a'th kar, mi budín"},
+            {l: "Leonés", p: "Ámote un carapiellu, mi budín"},
+            {l: "Aragonés", p: "Te amo muito, mi budín"},
+            {l: "Élfico (Quenya)", p: "Melinyë, mi budín"},
+            {l: "Élfico (Sindarin)", p: "Gellon nî, mi budín"},
+            {l: "Klingon", p: "bangwI' SoH, mi budín"},
+            {l: "Dothraki", p: "Anha zhilak yera, mi budín"},
+            {l: "Alto Valyrio", p: "Avy jorrāelan, mi budín"},
+            {l: "Náhuatl", p: "Ni mits tlayotla, mi budín"},
+            {l: "Aymara", p: "Munasmawa, mi budín"},
+            {l: "Quechua (Cusco)", p: "Munayqui, mi budín"},
+            {l: "Mapudungun", p: "Piwkeyeyu, mi budín"},
+            {l: "Bari", p: "Nan nyat tiri, mi budín"},
+            {l: "Sánscrito", p: "Tvayi snihyāmi, mi budín"}
+        ];
+
+        const grid = document.getElementById('langGrid');
+        translations.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'lang-card';
+            card.innerHTML = `<span class="lang-name">${item.l}</span><span class="phrase">${item.p}</span>`;
+            grid.appendChild(card);
+        });
+
+        // Íconos flotantes estilo Pompompurin
+        const icons = ['🍮', '⭐', '🐾', '💛', '🧁'];
+        
+        for (let i = 0; i < 20; i++) {
+            const item = document.createElement('div');
+            item.className = 'floating-item';
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.fontSize = (Math.random() * 15 + 18) + 'px';
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.setProperty('--duration', (Math.random() * 6 + 6) + 's');
+            item.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(item);
+        }
+    </script>
+</body>
+</html>

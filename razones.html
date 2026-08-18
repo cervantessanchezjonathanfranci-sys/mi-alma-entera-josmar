@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Razones para amarte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amarillo-pompom: #FFF4B8;
+            --amarillo-brillante: #FFE866;
+            --marrón-boina: #5B3A29;
+            --marrón-texto: #4A2E1B;
+            --crema-suave: #FFFCF0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Fredoka', sans-serif;
+            color: var(--marrón-texto);
+            background-color: var(--amarillo-pompom);
+            background-image: radial-gradient(var(--amarillo-brillante) 15%, transparent 16%);
+            background-size: 30px 30px;
+            background-attachment: fixed;
+        }
+
+        header {
+            padding: 50px 20px 20px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.8rem;
+            color: var(--marrón-boina);
+            margin: 0;
+            text-shadow: 3px 3px 0px var(--amarillo-brillante);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--marrón-texto);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            background: var(--crema-suave);
+            padding: 40px;
+            border-radius: 35px;
+            border: 4px solid var(--marrón-boina);
+            box-shadow: 0 10px 0px rgba(91, 58, 41, 0.15);
+        }
+
+        /* Grid para forzar 50 de cada lado */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+        }
+
+        .reason-col {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .reason-num {
+            flex-shrink: 0;
+            color: var(--crema-suave);
+            background: var(--marrón-boina);
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 0px rgba(0,0,0,0.1);
+            margin-top: 2px;
+        }
+
+        .reason-text {
+            word-break: break-word;
+        }
+
+        /* La razón final */
+        .final-reason {
+            margin-top: 40px;
+            padding: 25px;
+            background: var(--amarillo-pompom);
+            border: 3px dashed var(--marrón-boina);
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .final-reason h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2rem;
+            color: var(--marrón-boina);
+            margin: 0 0 10px 0;
+        }
+
+        .final-reason p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--marrón-texto);
+        }
+
+        .nav-buttons {
+            text-align: center;
+            padding-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: var(--crema-suave);
+            background: var(--marrón-boina);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.2);
+            border: 2px solid var(--marrón-boina);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: var(--amarillo-brillante);
+            color: var(--marrón-boina);
+            box-shadow: 0 6px 0px var(--marrón-boina);
+        }
+
+        footer {
+            text-align: center;
+            padding-bottom: 30px;
+            font-weight: 600;
+            color: var(--marrón-boina);
+        }
+
+        @media (max-width: 650px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2.8rem; }
+            .container { padding: 25px; border-radius: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>100 razones para amarte 🍮</h1>
+        <p>Y una pequeña verdad...</p>
+    </header>
+
+    <div class="container">
+        <div class="reasons-grid">
+            <!-- Columna Izquierda: 1 a 50 -->
+            <div class="reason-col">
+                <div class="reason-item"><span class="reason-num">1</span><span class="reason-text">por tu estupenda personalidad</span></div>
+                <div class="reason-item"><span class="reason-num">2</span><span class="reason-text">por tus chistes malos que me encantan</span></div>
+                <div class="reason-item"><span class="reason-num">3</span><span class="reason-text">por tu increíble paciencia &lt;3</span></div>
+                <div class="reason-item"><span class="reason-num">4</span><span class="reason-text">por lo determinado que eres</span></div>
+                <div class="reason-item"><span class="reason-num">5</span><span class="reason-text">por esos ojazos hermosos</span></div>
+                <div class="reason-item"><span class="reason-num">6</span><span class="reason-text">por tu sonrisa tan petit y linda</span></div>
+                <div class="reason-item"><span class="reason-num">7</span><span class="reason-text">por tu increíble melena JIJI 🔥</span></div>
+                <div class="reason-item"><span class="reason-num">8</span><span class="reason-text">por tu tuch</span></div>
+                <div class="reason-item"><span class="reason-num">9</span><span class="reason-text">por tus mugrosas patas</span></div>
+                <div class="reason-item"><span class="reason-num">10</span><span class="reason-text">por tus suaves cachetitos 😽</span></div>
+                <div class="reason-item"><span class="reason-num">11</span><span class="reason-text">por tus estallidos de risa 🌞</span></div>
+                <div class="reason-item"><span class="reason-num">12</span><span class="reason-text">por lo atento que eres</span></div>
+                <div class="reason-item"><span class="reason-num">13</span><span class="reason-text">por lo detallista que eres</span></div>
+                <div class="reason-item"><span class="reason-num">14</span><span class="reason-text">por tu linda forma de amar</span></div>
+                <div class="reason-item"><span class="reason-num">15</span><span class="reason-text">por tus jugozoz labios osiosi</span></div>
+                <div class="reason-item"><span class="reason-num">16</span><span class="reason-text">Por tu curiosidad</span></div>
+                <div class="reason-item"><span class="reason-num">17</span><span class="reason-text">por tus valores</span></div>
+                <div class="reason-item"><span class="reason-num">18</span><span class="reason-text">por tus sentimientos</span></div>
+                <div class="reason-item"><span class="reason-num">19</span><span class="reason-text">por tu increíble humildad</span></div>
+                <div class="reason-item"><span class="reason-num">20</span><span class="reason-text">por nunca rendirte</span></div>
+                <div class="reason-item"><span class="reason-num">21</span><span class="reason-text">por lo abrazable que eres oziozi</span></div>
+                <div class="reason-item"><span class="reason-num">22</span><span class="reason-text">por lo bezable q erez osiosi</span></div>
+                <div class="reason-item"><span class="reason-num">23</span><span class="reason-text">por lo tonto q eres JIJIJI</span></div>
+                <div class="reason-item"><span class="reason-num">24</span><span class="reason-text">por cada momento que paso contigo</span></div>
+                <div class="reason-item"><span class="reason-num">25</span><span class="reason-text">por siempre querer ser mejor</span></div>
+                <div class="reason-item"><span class="reason-num">26</span><span class="reason-text">por ser tan tu</span></div>
+                <div class="reason-item"><span class="reason-num">27</span><span class="reason-text">por tu voz que me relaja</span></div>
+                <div class="reason-item"><span class="reason-num">28</span><span class="reason-text">por siempre apoyarme</span></div>
+                <div class="reason-item"><span class="reason-num">29</span><span class="reason-text">por ser cómplice de mis tonterías JAKD</span></div>
+                <div class="reason-item"><span class="reason-num">30</span><span class="reason-text">por como hablas de lo que te gusta</span></div>
+                <div class="reason-item"><span class="reason-num">31</span><span class="reason-text">por hacerme más responsable jiji</span></div>
+                <div class="reason-item"><span class="reason-num">32</span><span class="reason-text">por ser mi lugar seguro</span></div>
+                <div class="reason-item"><span class="reason-num">33</span><span class="reason-text">por ser muy inteligente (nomasqyoe)</span></div>
+                <div class="reason-item"><span class="reason-num">34</span><span class="reason-text">por tu lealtad</span></div>
+                <div class="reason-item"><span class="reason-num">35</span><span class="reason-text">por ser mi pensamiento favorito</span></div>
+                <div class="reason-item"><span class="reason-num">36</span><span class="reason-text">por ser tan auténtico</span></div>
+                <div class="reason-item"><span class="reason-num">37</span><span class="reason-text">por estar en mi vida</span></div>
+                <div class="reason-item"><span class="reason-num">38</span><span class="reason-text">por aceptarme como soy</span></div>
+                <div class="reason-item"><span class="reason-num">39</span><span class="reason-text">por ser mi motor para ser algn mjr 💗</span></div>
+                <div class="reason-item"><span class="reason-num">40</span><span class="reason-text">poke eres mi mecánico fav (el único q conozco tbm JJIJIEJIE)</span></div>
+                <div class="reason-item"><span class="reason-num">41</span><span class="reason-text">por q me escuchas siempre</span></div>
+                <div class="reason-item"><span class="reason-num">42</span><span class="reason-text">poke tratas de entenderme</span></div>
+                <div class="reason-item"><span class="reason-num">43</span><span class="reason-text">por tu honestidad</span></div>
+                <div class="reason-item"><span class="reason-num">44</span><span class="reason-text">por ser alguien tan único y down</span></div>
+                <div class="reason-item"><span class="reason-num">45</span><span class="reason-text">por ser tan empalagoso (loamo)</span></div>
+                <div class="reason-item"><span class="reason-num">46</span><span class="reason-text">por mirarme siempre</span></div>
+                <div class="reason-item"><span class="reason-num">47</span><span class="reason-text">por respetarme</span></div>
+                <div class="reason-item"><span class="reason-num">48</span><span class="reason-text">por amarme</span></div>
+                <div class="reason-item"><span class="reason-num">49</span><span class="reason-text">por dejarme conocerte</span></div>
+                <div class="reason-item"><span class="reason-num">50</span><span class="reason-text">por tus sueños y metas</span></div>
+            </div>
+
+            <!-- Columna Derecha: 51 a 100 -->
+            <div class="reason-col">
+                <div class="reason-item"><span class="reason-num">51</span><span class="reason-text">por que siempre estaré ahí para ti</span></div>
+                <div class="reason-item"><span class="reason-num">52</span><span class="reason-text">por ser mi solecito de todas las mañanas</span></div>
+                <div class="reason-item"><span class="reason-num">53</span><span class="reason-text">por ser tan dependiente</span></div>
+                <div class="reason-item"><span class="reason-num">54</span><span class="reason-text">por ser muy ocurrente tbm ajjsjs</span></div>
+                <div class="reason-item"><span class="reason-num">55</span><span class="reason-text">por siempre complacerme</span></div>
+                <div class="reason-item"><span class="reason-num">56</span><span class="reason-text">por quererme jiji</span></div>
+                <div class="reason-item"><span class="reason-num">57</span><span class="reason-text">por por ser tan tonto</span></div>
+                <div class="reason-item"><span class="reason-num">58</span><span class="reason-text">por ser muy down para mí</span></div>
+                <div class="reason-item"><span class="reason-num">59</span><span class="reason-text">por ser lo que siempre quise</span></div>
+                <div class="reason-item"><span class="reason-num">60</span><span class="reason-text">por ser el hombre de mis sueños y q se hizo realidad</span></div>
+                <div class="reason-item"><span class="reason-num">61</span><span class="reason-text">por ser alguien muy amable</span></div>
+                <div class="reason-item"><span class="reason-num">62</span><span class="reason-text">por que eres increíble</span></div>
+                <div class="reason-item"><span class="reason-num">63</span><span class="reason-text">por tu serenidad</span></div>
+                <div class="reason-item"><span class="reason-num">64</span><span class="reason-text">por ser mi motivo de felicidad</span></div>
+                <div class="reason-item"><span class="reason-num">65</span><span class="reason-text">por ser tan dulce como un gansito</span></div>
+                <div class="reason-item"><span class="reason-num">66</span><span class="reason-text">por tus orejas todas llenas de cerilla JA</span></div>
+                <div class="reason-item"><span class="reason-num">67</span><span class="reason-text">por ser el dueño de cada uno de mis suspiros 6️⃣7️⃣🙌🏽🗣️‼️</span></div>
+                <div class="reason-item"><span class="reason-num">68</span><span class="reason-text">por tu amor a lo que haces</span></div>
+                <div class="reason-item"><span class="reason-num">69</span><span class="reason-text">por ser tan honesto siempre en todo</span></div>
+                <div class="reason-item"><span class="reason-num">70</span><span class="reason-text">por ser mi regalo de este año</span></div>
+                <div class="reason-item"><span class="reason-num">71</span><span class="reason-text">por lograr tus objetivos</span></div>
+                <div class="reason-item"><span class="reason-num">72</span><span class="reason-text">por regalarme a timi JIJIJI</span></div>
+                <div class="reason-item"><span class="reason-num">73</span><span class="reason-text">por tu compañía siempre</span></div>
+                <div class="reason-item"><span class="reason-num">74</span><span class="reason-text">por ser de corazón noble</span></div>
+                <div class="reason-item"><span class="reason-num">75</span><span class="reason-text">por cuidarme 💗</span></div>
+                <div class="reason-item"><span class="reason-num">76</span><span class="reason-text">por lo sensible que eres</span></div>
+                <div class="reason-item"><span class="reason-num">77</span><span class="reason-text">por tu corazón lleno de bondad</span></div>
+                <div class="reason-item"><span class="reason-num">78</span><span class="reason-text">por lo fuerte que eres</span></div>
+                <div class="reason-item"><span class="reason-num">79</span><span class="reason-text">por tu manera de hablar</span></div>
+                <div class="reason-item"><span class="reason-num">80</span><span class="reason-text">por tu fortaleza como persona</span></div>
+                <div class="reason-item"><span class="reason-num">81</span><span class="reason-text">por tus cejitas</span></div>
+                <div class="reason-item"><span class="reason-num">82</span><span class="reason-text">por tus lunares</span></div>
+                <div class="reason-item"><span class="reason-num">83</span><span class="reason-text">por tu nariz bonita petit</span></div>
+                <div class="reason-item"><span class="reason-num">84</span><span class="reason-text">por entenderme en todo</span></div>
+                <div class="reason-item"><span class="reason-num">85</span><span class="reason-text">por tu estilo muy kul</span></div>
+                <div class="reason-item"><span class="reason-num">86</span><span class="reason-text">por darme mi lugar siempre</span></div>
+                <div class="reason-item"><span class="reason-num">87</span><span class="reason-text">por la manera en la que te expresas de mí con los demás 💘</span></div>
+                <div class="reason-item"><span class="reason-num">88</span><span class="reason-text">por comprarme helado JIJIJIJI</span></div>
+                <div class="reason-item"><span class="reason-num">89</span><span class="reason-text">por ser mi paraíso lunar 💗</span></div>
+                <div class="reason-item"><span class="reason-num">90</span><span class="reason-text">por tu calma</span></div>
+                <div class="reason-item"><span class="reason-num">91</span><span class="reason-text">por ser tan importante para mi</span></div>
+                <div class="reason-item"><span class="reason-num">92</span><span class="reason-text">por ser muy trabajador</span></div>
+                <div class="reason-item"><span class="reason-num">93</span><span class="reason-text">por ser muy eficiente en todo lo que haces</span></div>
+                <div class="reason-item"><span class="reason-num">94</span><span class="reason-text">poke próximamente serás mi esposito 🌞</span></div>
+                <div class="reason-item"><span class="reason-num">95</span><span class="reason-text">por siempre decirme lo linda q me veo</span></div>
+                <div class="reason-item"><span class="reason-num">96</span><span class="reason-text">por lo interesante que eres</span></div>
+                <div class="reason-item"><span class="reason-num">97</span><span class="reason-text">por nunca dejarme sola</span></div>
+                <div class="reason-item"><span class="reason-num">98</span><span class="reason-text">por siempre querer hablar conmigo</span></div>
+                <div class="reason-item"><span class="reason-num">99</span><span class="reason-text">por eres todo lo que está bien en este universo</span></div>
+                <div class="reason-item"><span class="reason-num">100</span><span class="reason-text">por simplemente existir</span></div>
+            </div>
+        </div>
+
+        <div class="final-reason">
+            <h3>Y 1 razón para irme...</h3>
+            <p>"No existe ninguna razón en este universo para alejarme de ti."</p>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="carta.html" class="btn">Carta ✉️</a>
+        <a href="index.html" class="btn">Volver al Inicio 🏠</a>
+        <a href="juego1.html" class="btn">Carrera 🏎️</a>
+        <a href="tamo.html" class="btn">Te amo en el mundo 🌍</a>
+        <a href="album.html" class="btn">Álbum 📸</a>
+    </div>
+
+    <footer>
+        Con todo mi cariño, hoy y siempre ✨
+    </footer>
+
+</body>
+</html>

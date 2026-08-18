@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Carrera: ViviMovil vs JosmarMovil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amarillo: #f2cb05;
+            --rojo-supra: #ff3333;
+            --azul-gtr: #0088ff;
+            --pista-color: #22222b;
+            --blanco: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #111;
+            color: white;
+            user-select: none;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 3px solid var(--amarillo);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2rem;
+            color: var(--amarillo);
+            margin: 0;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        /* Pista de Carreras */
+        .track-container {
+            position: relative;
+            width: 100vw;
+            height: calc(100vh - 220px);
+            background: var(--pista-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            border-top: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+            box-sizing: border-box;
+        }
+
+        /* Línea divisoria del carril */
+        .lane-divider {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 6px;
+            border-top: 6px dashed var(--amarillo);
+            transform: translateY(-50%);
+        }
+
+        /* Línea de Meta */
+        .finish-line {
+            position: absolute;
+            right: 40px;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                #fff, #fff 15px,
+                #000 15px, #000 30px
+            );
+            border-left: 3px solid var(--amarillo);
+            z-index: 2;
+        }
+
+        /* Carriles */
+        .lane {
+            position: relative;
+            height: 40%;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilo para las imágenes de los autos */
+        .car {
+            position: absolute;
+            left: 10px;
+            height: 80px; /* Altura del auto */
+            width: auto;
+            object-fit: contain;
+            transition: left 0.1s ease-out;
+            z-index: 5;
+            filter: drop-shadow(0px 5px 4px rgba(0,0,0,0.6));
+        }
+
+        .car-label {
+            position: absolute;
+            top: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.7);
+            z-index: 6;
+        }
+
+        /* Controles */
+        .controls {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-gas {
+            padding: 18px 40px;
+            font-size: 1.5rem;
+            font-family: 'Fredoka One', cursive;
+            background: linear-gradient(135deg, #ff9900, #ff3300);
+            color: white;
+            border: 3px solid var(--amarillo);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 0px #880000;
+            transition: transform 0.05s, box-shadow 0.05s;
+        }
+
+        .btn-gas:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px #880000;
+        }
+
+        /* Mensaje Final Modal */
+        #final-msg {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 25px;
+            border: 3px solid var(--amarillo);
+            text-align: center;
+            z-index: 100;
+            max-width: 85%;
+            box-shadow: 0 0 30px rgba(242, 203, 5, 0.4);
+        }
+
+        #final-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            color: var(--amarillo);
+            margin: 0 0 10px 0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--amarillo);
+            color: #111;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .car { height: 55px; }
+            .btn-gas { font-size: 1.2rem; padding: 15px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gran Carrera </h1>
+        <div class="subtitle">¡Presiona acelerar o la barra espaciadora para ganar!</div>
+    </header>
+
+    <div class="track-container" id="track">
+        <div class="lane-divider"></div>
+        <div class="finish-line"></div>
+
+        <!-- Carril Toyota Supra -->
+        <div class="lane">
+            <span class="car-label" style="color: var(--rojo-supra); border: 1px solid var(--rojo-supra);">JosmarMovil</span>
+            <img id="supra" class="car" src="carro.png" alt="josmarMovil">
+        </div>
+
+        <!-- Carril Nissan GT-R -->
+        <div class="lane">
+            <span class="car-label" style="color: var(--azul-gtr); border: 1px solid var(--azul-gtr);">ViviMovil</span>
+            <img id="gtr" class="car" src="matiz.png" alt="vivimovil">
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-gas" id="gasBtn">¡ACELERAR! 🏎️</button>
+    </div>
+
+    <!-- Pantalla Final -->
+    <div id="final-msg">
+        <h2 id="final-title">¡VICTORIA! 🏆</h2>
+        <p id="final-desc" style="font-size: 1.2rem; line-height: 1.6;">
+            ¡El JosmarMovil se lleva la victoria con un nitro imparable!
+        </p>
+        <button onclick="resetGame()" class="btn-back">Jugar de nuevo 🔄</button>
+        <br><br>
+        <a href="index.html" style="color: #aaa; text-decoration: underline; font-size: 0.9rem;">Volver al inicio</a>
+    </div>
+
+    <script>
+        const supra = document.getElementById('supra');
+        const gtr = document.getElementById('gtr');
+        const gasBtn = document.getElementById('gasBtn');
+        const finalMsg = document.getElementById('final-msg');
+        const finalTitle = document.getElementById('final-title');
+        const finalDesc = document.getElementById('final-desc');
+
+        let supraPos = 0;
+        let gtrPos = 0;
+        let gameActive = true;
+        let gtrInterval;
+
+        // Ancho máximo considerando el tamaño de la imagen del coche
+        const getFinishPosition = () => {
+            return window.innerWidth - 140;
+        };
+
+        // Función para mover el Toyota Supra
+        function boostSupra() {
+            if (!gameActive) return;
+
+            supraPos += 18; // Pixeles recorridos por clic
+            supra.style.left = `${supraPos}px`;
+
+            checkWinner();
+        }
+
+        // Movimiento automático del Nissan GT-R
+        function startGTR() {
+            gtrInterval = setInterval(() => {
+                if (!gameActive) return;
+
+                gtrPos += Math.random() * 12 + 5;
+                gtr.style.left = `${gtrPos}px`;
+
+                checkWinner();
+            }, 100);
+        }
+
+        // Verificar el ganador
+        function checkWinner() {
+            const finishLinePos = getFinishPosition();
+
+            if (supraPos >= finishLinePos && gameActive) {
+                gameActive = false;
+                clearInterval(gtrInterval);
+                showWinner("¡GANASTE! 🏆", "¡El JosmarMovil dominó la pista y dejó atrás al ViviMovil! 🔥");
+            } else if (gtrPos >= finishLinePos && gameActive) {
+                gameActive = false;
+                clearInterval(gtrInterval);
+                showWinner("¡TE GANARON! 🏁", "El viviMovil tomó la delantera esta vez. ¡Inténtalo de nuevo presionado más rápido!");
+            }
+        }
+
+        function showWinner(title, desc) {
+            finalTitle.innerText = title;
+            finalDesc.innerText = desc;
+            finalMsg.style.display = 'block';
+        }
+
+        function resetGame() {
+            supraPos = 0;
+            gtrPos = 0;
+            supra.style.left = '10px';
+            gtr.style.left = '10px';
+            finalMsg.style.display = 'none';
+            gameActive = true;
+            clearInterval(gtrInterval);
+            startGTR();
+        }
+
+        // Eventos
+        gasBtn.addEventListener('click', boostSupra);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                boostSupra();
+            }
+        });
+
+        startGTR();
+    </script>
+</body>
+</html>

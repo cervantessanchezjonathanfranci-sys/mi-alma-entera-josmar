@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartaS</title>
+    
+    <!-- Fuentes Kawaii de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS para el carrusel -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --amarillo-pompom: #fff3a1;
+            --amarillo-pastel: #fffbe3;
+            --marron-boina: #5c3a21;
+            --marron-suave: #8c5a32;
+            --blanco-crema: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--marron-boina);
+            background-color: var(--amarillo-pompom);
+            overflow-x: hidden;
+        }
+
+        /* Fondo de patrón Pompompurin con overlay */
+        .pompom-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff6bd;
+            background-image: 
+                radial-gradient(var(--marron-boina) 10%, transparent 11%),
+                radial-gradient(var(--marron-boina) 10%, transparent 11%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            color: var(--marron-boina);
+            text-shadow: 4px 4px 0px #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--marron-suave);
+        }
+
+        /* Contenedor principal del carrusel */
+        .carousel-container {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            padding: 15px;
+            background: var(--amarillo-pastel);
+            border: 5px solid var(--marron-boina);
+            border-radius: 30px;
+            box-shadow: 0 10px 0px var(--marron-suave);
+        }
+
+        .carousel-inner {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--marron-boina);
+        }
+
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background: rgba(92, 58, 33, 0.85);
+            border-radius: 15px;
+            padding: 10px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .carousel-caption h3 {
+            font-family: 'Fredoka One', cursive;
+            margin: 0;
+            color: var(--amarillo-pompom);
+        }
+
+        /* Contenedor del Reproductor de Audio */
+        .audio-container {
+            max-width: 500px;
+            margin: 0 auto 60px auto;
+            text-align: center;
+            background: var(--amarillo-pastel);
+            padding: 15px;
+            border: 4px solid var(--marron-boina);
+            border-radius: 25px;
+            box-shadow: 0 6px 0px var(--marron-suave);
+        }
+
+        .audio-container audio {
+            width: 100%;
+            outline: none;
+            border-radius: 15px;
+        }
+
+        /* Sección de la Carta Estilo Pompompurin */
+        .letter-section {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 80px auto;
+            background: var(--amarillo-pastel);
+            padding: 50px 40px 40px 40px;
+            border-radius: 35px;
+            border: 5px solid var(--marron-boina);
+            box-shadow: 0 10px 0px var(--marron-suave);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Boina decorativa sobre la carta */
+        .letter-section::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background-color: var(--marron-boina);
+            border-radius: 20px 20px 5px 5px;
+        }
+
+        .letter-section h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3rem;
+            color: var(--marron-boina);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* Botones Interactivos Kawaii */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+            padding: 0 20px;
+        }
+
+        .btn-custom {
+            text-decoration: none;
+            color: var(--marron-boina);
+            background: var(--blanco-crema);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 0px var(--marron-boina);
+            border: 3px solid var(--marron-boina);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            background: #fff8d6;
+            color: var(--marron-boina);
+            box-shadow: 0 8px 0px var(--marron-boina);
+        }
+
+        .btn-custom:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0px var(--marron-boina);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-weight: 700;
+            color: var(--amarillo-pastel);
+            background: var(--marron-boina);
+        }
+
+        /* Elementos Flotantes */
+        .floating-item {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            animation: floatUp var(--duration) linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .carousel-item img { height: 250px; }
+            .letter-section { padding: 40px 20px; margin: 0 15px 80px 15px; }
+            .audio-container { margin: 0 15px 60px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pompom-bg"></div>
+
+    <header>
+        <h1>Mi carta</h1>
+        <p class="subtitle">te amo demasiado</p>
+    </header>
+
+    <!-- Carrusel Corregido -->
+    <div class="container carousel-container">
+        <div id="theCarousel" class="carousel slide" data-bs-ride="carousel">
+            
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#theCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#theCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#theCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="ima2.jpeg" class="d-block w-100" alt="Cenote Cocodrilo Dorado">
+                    <div class="carousel-caption d-block">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="ima1.jpeg" class="d-block w-100" alt="Chetumal Atardecer">
+                    <div class="carousel-caption d-block">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="ima3.jpeg" class="d-block w-100" alt="Mega Escultura Chetumal">
+                    <div class="carousel-caption d-block">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#theCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#theCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Reproductor de Audio con Autoplay -->
+    <div class="audio-container">
+        <audio id="myAudio" controls autoplay>
+            <source src="Contigo.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <!-- Carta de Cumpleaños -->
+    <section class="letter-section">
+        <h2>Para ti...</h2>
+        <p>Ola mi amor, te amo mucho y creo que no hay palabras suficientes para describir esto que siento por ti, así que mejor por qué no te das una pequeña idea de lo mucho que significas para mí uajajaja
+mmmm, por dónde empezar, Omggg, cuando fuimos la primera vez por helado, oye q tipo tan mas chill de cojones pensé q eras ( lo eres todavía JIJIJUJI) y tan misterioso y tan callado JQJSK, te amo mucho, sin duda 
+alguna de las mejores decisiones que tomé al ir por un helado con un completo desconocido, me pudiste haber robado sabes? y aún así fue top lo q pasó después de ese día jeje, cuando empezamos a salir más y más y
+poco a poco irme enamorando más de ti, siempre un poquito más que el día anterior y siempre será así, por que mi amor por ti no tiene límites por que siempre crecerá cada día más, gracias a ti se lo que significa 
+realmente ser amada con todo el amor del mundo mundial, y créeme que aunque hayan discusiones, malos entendidos o problemas entre nosotros, jamás será una opción dejarte de amar, por que es una decisión que he tomado 
+desde el primero momento que compartimos nuestros sentimientos, te amo josmarcito, ni la tinta de 67 millones
+de lapiceros alcanzarían a plasmar todo lo que mi corazón siente por ti 💗</p>
+    </section>
+
+    <!-- Botones de Navegación -->
+    <div class="buttons-container">
+        <a href="tamo.html" class="btn-custom" target="_blank">Te amo en el mundo</a>
+        <a href="juego1.html" class="btn-custom" target="_blank">Carros</a>
+        <a href="razones.html" class="btn-custom" target="_blank">100 razones 📜</a>
+        <a href="album.html" class="btn-custom" target="_blank">Album</a>
+        <a href="index.html" class="btn-custom" target="_blank">Inicio</a>
+    </div>
+
+    <footer>
+        Con todo mi cariño para mi budin | 2026 🍮
+    </footer>
+
+    <!-- Bootstrap 5 JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Forzar reproducción automática tras el primer toque/clic si el navegador bloquea autoplay
+        const audio = document.getElementById('myAudio');
+        
+        const playAudio = () => {
+            audio.play().catch(error => {
+                console.log("Autoplay bloqueado por el navegador:", error);
+            });
+            document.removeEventListener('click', playAudio);
+            document.removeEventListener('touchstart', playAudio);
+        };
+
+        document.addEventListener('click', playAudio);
+        document.addEventListener('touchstart', playAudio);
+
+        // Íconos flotantes estilo Pompompurin
+        const icons = ['🍮', '⭐', '🐾', '💛', '🧁'];
+        
+        for (let i = 0; i < 20; i++) {
+            const item = document.createElement('div');
+            item.className = 'floating-item';
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.fontSize = (Math.random() * 15 + 18) + 'px';
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.setProperty('--duration', (Math.random() * 6 + 6) + 's');
+            item.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(item);
+        }
+    </script>
+</body>
+</html>

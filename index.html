@@ -1,0 +1,231 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josmar - Pompompurin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --amarillo-pompom: #fff3a1;
+            --amarillo-pastel: #fffbe3;
+            --marron-boina: #5c3a21;
+            --marron-suave: #8c5a32;
+            --blanco-crema: #ffffff;
+            --rosa-mejillas: #ffb7c5;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--marron-boina);
+            overflow: hidden;
+            background-color: var(--amarillo-pompom);
+        }
+
+        /* Fondo con patrón de huellitas y pudines */
+        .pompom-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff6bd;
+            background-image: 
+                radial-gradient(var(--marron-boina) 10%, transparent 11%),
+                radial-gradient(var(--marron-boina) 10%, transparent 11%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        .main-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Tarjeta estilo Pompompurin */
+        .welcome-box {
+            position: relative;
+            background: var(--amarillo-pastel);
+            padding: 40px 35px;
+            border-radius: 35px;
+            border: 5px solid var(--marron-boina);
+            box-shadow: 0 12px 0px var(--marron-suave);
+            max-width: 450px;
+            width: 90%;
+            animation: bounceIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Boina de Pompompurin arriba del contenedor */
+        .welcome-box::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 30px;
+            background-color: var(--marron-boina);
+            border-radius: 20px 20px 5px 5px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.8rem;
+            color: var(--marron-boina);
+            margin: 10px 0 0 0;
+            text-shadow: 3px 3px 0px var(--amarillo-pompom);
+            letter-spacing: 1px;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 5px 0 25px 0;
+            color: var(--marron-suave);
+            letter-spacing: 1px;
+        }
+
+        /* Menú de navegación */
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .nav-card {
+            text-decoration: none;
+            color: var(--marron-boina);
+            background: var(--blanco-crema);
+            padding: 14px 20px;
+            border-radius: 20px;
+            border: 3px solid var(--marron-boina);
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0px var(--marron-boina);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-3px);
+            background: #fff8d6;
+            box-shadow: 0 8px 0px var(--marron-boina);
+        }
+
+        .nav-card:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0px var(--marron-boina);
+        }
+
+        .nav-card span {
+            font-size: 1.2rem;
+            background: var(--amarillo-pompom);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--marron-boina);
+        }
+
+        /* Elementos flotantes animados (pudines y estrellas) */
+        .floating-item {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            animation: floatUp var(--duration) linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 3rem; }
+            .welcome-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pompom-bg"></div>
+
+    <div class="main-container">
+        <div class="welcome-box">
+            <h1>Josmar</h1>
+            <p class="intro-text">🍮 ¡Bienvenido! 🍮</p>
+            
+            <nav class="menu-links">
+                <a href="carta.html" class="nav-card">
+                    Mi carta para ti
+                    <span>✉️</span>
+                </a>
+                <a href="tamo.html" class="nav-card">
+                    Te amo en el mundo
+                    <span>🌎</span>
+                </a>
+                <a href="razones.html" class="nav-card">
+                    100 Razones
+                    <span>📜</span>
+                </a>
+                <a href="juego1.html" class="nav-card">
+                    Carrera
+                    <span>⭐</span>
+                </a>
+               
+                <a href="album.html" class="nav-card">
+                    Album
+                    <span>🎞️</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Generador de pudines y estrellitas flotantes
+        const icons = ['🍮', '⭐', '🐾', '💛', '🧁'];
+        
+        for (let i = 0; i < 20; i++) {
+            const item = document.createElement('div');
+            item.className = 'floating-item';
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.fontSize = (Math.random() * 15 + 18) + 'px';
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.setProperty('--duration', (Math.random() * 6 + 6) + 's');
+            item.style.animationDelay = (Math.random() * 5) + 's';
+            document.body.appendChild(item);
+        }
+    </script>
+
+</body>
+</html>
